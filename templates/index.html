@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>date</th>
+        </tr>
+
+        {% for user in users %}
+            <tr>
+                <th>{{ user.id }}</th>
+                <th>{{ user.firstname }}</th>
+                <th>{{ user.lastname }}</th>
+                <th>{{ user.date_of_birth }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'register' %}">register follower</a>
+
+    <br>
+    <b>add mail</b>
+    <form method="POST" action="{% url 'add-mail' %}">
+        {% csrf_token %}
+        <input type="email" name="email">
+        <input type="submit" value="Submit">
+    </form>
+
+    <table class="mail-list">
+        <tr>
+            <th>email</th>
+            <th>#</th>
+        </tr>
+
+        {% for email in emails %}
+        <tr>
+            <form method="POST" action="{% url 'send-mail' %}">
+                {% csrf_token %}
+                <th>{{ email.email }}</th>
+                <input type="hidden" name="email" value="{{ email.email }}">
+                <th><input type="submit"></th>
+            </form>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

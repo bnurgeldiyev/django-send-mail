@@ -1,0 +1,24 @@
+h1 {
+    color:brown;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.mail-list {
+    width: 30%;
+}
+
+
+p {
+    color: red;
+}
