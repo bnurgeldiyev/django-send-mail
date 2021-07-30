@@ -1,2 +1,2 @@
 # django-send-mail
-queqe celery
+queue celery
